@@ -95,6 +95,10 @@ class BurgerBuilder extends Component {
         });
     };
 
+    orderPlacedHandler = () => {
+        alert('Order placed successfully');
+    };
+
     render() {
 
         console.log("render invoked");
@@ -113,6 +117,8 @@ class BurgerBuilder extends Component {
                     show={this.state.purchasing}
                     dismissModalHandler={this.dismissModalHandler}>
                     <OrderSummary
+                        handleOrderSuccess={this.orderPlacedHandler}
+                        handleOrderCancel={this.dismissModalHandler}
                         ingredients={this.state.ingredients} />
                 </Modal>
                 <Burger ingredients={this.state.ingredients}/>
