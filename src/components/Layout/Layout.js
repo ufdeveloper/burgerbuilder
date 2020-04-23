@@ -8,18 +8,27 @@ import classes from './Layout.css';
 class Layout extends Component {
 
     state = {
-        showSideDrawer: true
-    }
+        showSideDrawer: false
+    };
+
     sideDrawerClosedHandler = () => {
         this.setState({
             showSideDrawer: false
         });
     };
 
+    sideDrawerDisplayHandler = () => {
+        this.setState((prevState) => {
+            return {
+                showSideDrawer: !prevState.showSideDrawer
+            }
+        });
+    };
+
     render() {
         return (
             <Aux>
-                <Toolbar />
+                <Toolbar toggleClickHandler={this.sideDrawerDisplayHandler}/>
                 <SideDrawer
                     showSideDrawer={this.state.showSideDrawer}
                     sideDrawerClosedHandler={this.sideDrawerClosedHandler} />
