@@ -1,12 +1,15 @@
 import React, {Component} from 'react';
 import classes from './Modal.css';
 import Backdrop from './../Backdrop/Backdrop';
-import Aux from './../../../hoc/Aux';
+import Aux from '../../../hoc/Aux/Aux';
+import PropTypes from "prop-types";
+import BurgerIngredient from "../../Burger/BurgerIngredient/BurgerIngredient";
 
 class Modal extends Component {
 
     shouldComponentUpdate(nextProps, nextState, nextContext) {
-        return nextProps.show !== this.props.show;
+        return nextProps.show !== this.props.show
+                || nextProps.children !== this.props.children;
     }
 
     render() {
@@ -27,6 +30,11 @@ class Modal extends Component {
             </Aux>
         );
     }
+};
+
+Modal.propTypes = {
+    show: PropTypes.bool,
+    dismissModalHandler: PropTypes.func
 };
 
 export default Modal;
